@@ -6,9 +6,10 @@
     <title>Asthriona - ToDoList</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"
         integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+    <link rel="stylesheet" href="/css/main.css">
 </head>
 <body>
-    <div class="container">
+    <div class="container mt-4">
         <div class="text-center">
             <h1>Get shit done fast!</h1>
             <div class="row">
@@ -22,7 +23,7 @@
                           </div>
                         </form>
                 </div>
-                <div class="text-left">
+                <div class="text-left todo">
                     <h1>To Do:</h1>
                     <hr>
                     <%
@@ -33,10 +34,12 @@
                         }
                     }
                     NotDonezo.forEach(todos =>{%>
-                        <li><b><%= todos.todo %></b></li>
+                        <!--<li><form action="/todos/<%= todos.id %>/done" method="POST"><b><%= todos.todo %></b> <button class="button-smbtn btn-primary btn-sm" type="submit">done</button></li></form>-->
+                        <li><a href="/todos/<%= todos.id %>/done"><b><%= todos.todo %></b> </a></li>
                     <%})%>
                 </ul>
                 <hr>
+                <div class="donezo">
                 <h1>That's done mate!</h1>
                 <%
                     let donezo = [];
@@ -46,9 +49,10 @@
                         }
                     }
                     donezo.forEach(todos =>{%>
-                        <li style="color:gray"><b><del><%= todos.todo %></del></b></li>
+                        <li><b><del><a href="/todos/<%= todos.id %>/done"><b><%= todos.todo %></b></a></li></del>
                     <%})%>
                 </ul>
+            </div>
                 </div>
             </div>
         </div>

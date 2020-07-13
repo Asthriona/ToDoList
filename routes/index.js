@@ -5,9 +5,7 @@ const Todo = require('../model/todo');
 const bodyParser = require('body-parser');
 
 router.get('/', async (req,res)=>{
-    let todos = await Todo.find().sort({
-        createdAt: 'desc'
-    });
+    let todos = await Todo.find()
     res.render('index',{todos: todos})
 });
 
@@ -19,6 +17,16 @@ router.post('/todos', async (req,res)=>{
     })
     await newTodos.save()
     res.redirect("/")
+});
+router.get("/todos/:id/done", async (req,res)=>{
+    let todoId = req.params.id;
+    Todo.findById(todoId)
+    .exec().then(async function(result){
+        result.done = !result.done;
+       return result.save();
+    }).then(function(result){
+        res.redirect('/')
+    });
 })
 
 module.exports = router
