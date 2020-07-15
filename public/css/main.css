@@ -10,3 +10,7 @@ li {
 .donezo a:visited { color: #9c9c9c; }
 .donezo a:hover { color: #9c9c9c; }
 .donezo a:active { color: #9c9c9c; }
+
+.hover{
+    display: inline-block;
+}

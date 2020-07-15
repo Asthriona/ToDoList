@@ -50,7 +50,7 @@
                         }
                     }
                     donezo.forEach(todos =>{%>
-                        <li><b><del><a href="/todos/<%= todos.id %>/done"><b><%= todos.todo %></b></a></li></del>
+                        <form action="/delete/<%= todos.id %>"><li><b><del><a href="/todos/<%= todos.id %>/done"><b><%= todos.todo %></b></a></li></del><button class="hover" type="submit">Delete</button></form>
                     <%})%>
                 </ul>
             </div>

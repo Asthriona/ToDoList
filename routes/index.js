@@ -28,5 +28,11 @@ router.get("/todos/:id/done", async (req,res)=>{
         res.redirect('/')
     });
 })
+router.get('/delete/:id', (req,res)=>{
+    let toDlete = req.params.id;
+    Todo.findByIdAndDelete(toDlete)
+    .then(console.log("deleted "+ toDlete))
+    .then(res.redirect('/'))
+})
 
 module.exports = router
