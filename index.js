@@ -18,4 +18,4 @@ app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'ejs');
 app.set('x-powered-by', 'Poggy!');
 app.use('/', indexRouter)
-app.listen(Config.port, console.log("Server started."));
+app.listen(Config.port, console.log("App started and listening port: "+Config.port));
