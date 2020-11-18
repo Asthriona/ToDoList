@@ -1,14 +1,13 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Asthriona - ToDoList</title>
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"
+        integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
     <link rel="stylesheet" href="/css/main.css">
 </head>
-
 <body>
     <div class="container mt-4">
         <div class="text-center">
@@ -16,15 +15,15 @@
             <p>New Op: <a href="/NeedToDo">Need To Do</a> | <a href="/Stuff_I_want_to_do_but_isnt_needed">Fun stuff</a> | <a href="/This_can_piss_off">Fuck Off</a></p>
             <div class="row">
                 <div class="col col-sm-12 mt-4">
-                    <form action="/todos" method="post">
+                    <form action="/Stuff_I_want_to_do_but_isnt_needed/todos" method="post">
                         <div class="input-group mb-3">
                             <input type="text" class="form-control" placeholder="watcha need to get done?" maxlength="30" onkeyup="countChar(this)" name="todo" required>
                             <div class="input-group-append">
-                                <button class="btn btn-outline-secondary" type="submit" id="button-addon2">Button</button>
+                              <button class="btn btn-outline-secondary" type="submit" id="button-addon2">Button</button>
                             </div>
-                        </div>
-                        <div id="charNum"></div>
-                    </form>
+                          </div>
+                          <div id="charNum"></div>
+                        </form>
                 </div>
                 <div class="text-left todo">
                     <h1>To Do:</h1>
@@ -39,12 +38,12 @@
                     NotDonezo.forEach(todos =>{%>
                         <!--<li><form action="/todos/<%= todos.id %>/done" method="POST"><b><%= todos.todo %></b> <button class="button-smbtn btn-primary btn-sm" type="submit">done</button></li></form>-->
                         <li><a href="/todos/<%= todos.id %>/done"><b><%= todos.todo %></b> </a></li>
-                        <%})%>
-                            </ul>
-                            <hr>
-                            <div class="donezo">
-                                <h1>That's done mate!</h1>
-                                <%
+                    <%})%>
+                </ul>
+                <hr>
+                <div class="donezo">
+                <h1>That's done mate!</h1>
+                <%
                     let donezo = [];
                     for (let i = 0; i < todos.length; i++){
                         if(todos[i].done == true){
@@ -52,28 +51,24 @@
                         }
                     }
                     donezo.forEach(todos =>{%>
-                                    <li>
-                                        <b><del><a href="/<%= todos.id %>/done"><b><%= todos.todo %></b></a>
-                                        </del>
-                                        <a style="color: #000000;" href="/delete/<%= todos.id %>">&nbsp;delete</a>
-                                    </li>
-                                    <%})%>
-                                        </ul>
-                            </div>
+                        <form action="/delete/<%= todos.id %>"><li><b><del><a href="/todos/<%= todos.id %>/done"><b><%= todos.todo %></b></a></li></del><button class="hover" type="submit">Delete</button></form>
+                    <%})%>
+                </ul>
+            </div>
                 </div>
             </div>
         </div>
     </div>
     <script>
         function countChar(val) {
-            var len = val.value.length;
-            if (len >= 31) {
-                val.value = val.value.substring(0, 31);
-            } else {
-                $('#charNum').text(len);
-            }
-        };
-    </script>
+        var len = val.value.length;
+        if (len >= 31) {
+          val.value = val.value.substring(0, 31);
+        } else {
+          $('#charNum').text(len);
+        }
+      };
+      </script>
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js" integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI" crossorigin="anonymous"></script>
